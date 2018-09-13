@@ -16,7 +16,7 @@ class App extends Component {
         <Switch>
           {
             appRoutes.map((route, key) =>
-              <Route key={key} path={process.env.PUBLIC_URL + route.path} exact={!!route.exact} component={route.view} />
+              <Route key={key} path={route.path} exact={!!route.exact} component={route.view} />
             )
           }
         </Switch>
