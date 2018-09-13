@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { messaging, getToken } from './firebase';
+import { messaging, getToken } from './utils/firebase';
 import Notifications, { notify } from 'react-notify-toast';
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
-    <div>
-        <Notifications />
-        <App />
-    </div>, 
+    <BrowserRouter>
+        <div>
+            <Notifications />
+            <App />
+        </div>
+    </BrowserRouter>, 
     document.getElementById('root'));
 //registerServiceWorker();
 

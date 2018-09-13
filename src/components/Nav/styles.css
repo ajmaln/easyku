@@ -1,0 +1,23 @@
+
+.nav {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategrey;
+}
+
+.nav > a {
+    color: aliceblue;
+    padding: 15px 15px;
+    text-decoration: none;
+}
+
+.nav > a:hover {
+    background-color: rgba(240, 248, 255, 0.541)
+}
+
+.nav > a.active {
+    background-color: rgba(240, 248, 255, 0.541)
+}

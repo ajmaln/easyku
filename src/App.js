@@ -1,55 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ReactLoading from 'react-loading';
+import { Switch, Route } from 'react-router-dom';
+import appRoutes from './routes';
+import Nav from './components/Nav';
 
-const url = 'https://kerala-university-api.herokuapp.com/results'
 
 class App extends Component {
-  state = {
-    datas: [],
-    loading: true,
-  }
-
-  componentDidMount() {
-    //getToken();
-    fetch(url).then(resp => {
-      resp.json().then(datas => {
-        this.setState({ datas, loading: false })
-      })
-    })
-  }
-
-  header = React.createRef();
-
   render() {
-    const { datas, loading } = this.state;
-
     return (
       <div className="App">
-        <header ref={this.header} className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">University Results</h1>
+        <header className="App-header">
+          <h1 className="App-title"><span>easy</span><span style={{color: '#d65a5a'}}>KU</span></h1>
         </header>
-        <div className="App-intro">
+        <Nav />
+        <Switch>
           {
-            loading ?
-              <div className='container' style={{ minHeight: window.innerHeight - 200, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                <ReactLoading type={'spin'} color={'blue'} height={50} width={50} className='loader' />
-              </div>
-              :
-              <div>
-                {
-                  datas.map((data, key) =>
-                    <div key={key} className="ListItem">
-                      <h4 className="Text">{data.title}</h4>
-                      <a className="DownloadButton" href={data.link}><button>Download</button></a>
-                    </div>
-                  )
-                }
-              </div>
+            appRoutes.map((route, key) =>
+              <Route key={key} path={route.path} exact={!!route.exact} component={route.view} />
+            )
           }
-        </div>
+        </Switch>
       </div>
     );
   }
