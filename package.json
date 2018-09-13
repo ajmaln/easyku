@@ -1,6 +1,6 @@
 {
   "name": "kerala-university-app",
-  "homepage": "http://ajmaln.github.io/ku-app",
+  "homepage": "https://ajmaln.github.io/ku-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-loading": "^2.0.3",
+    "react-notify-toast": "^0.5.0",
     "react-scripts": "1.1.5"
   },
   "scripts": {
@@ -16,7 +17,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "https-start": "react-scripts start --https=true --cert='/home/ajmal/server.pem' --key='/home/ajmal/server-key.pem'",
+    "f-deploy": "yarn build && firebase deploy --only hosting"
   },
   "devDependencies": {
     "gh-pages": "^1.2.0"

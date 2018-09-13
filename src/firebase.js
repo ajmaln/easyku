@@ -14,7 +14,7 @@ firebase.initializeApp(config);
 const messaging = firebase.messaging();
 const db = firebase.firestore();
 
-const settings = {/* your settings... */ timestampsInSnapshots: true};
+const settings = {/* your settings... */ timestampsInSnapshots: true };
 db.settings(settings);
 
 messaging.usePublicVapidKey("BDDNlVdwUP39dJEu9rfD7kBEOUvaUXhJkuQqC4Nc4B0P3HtpVl0E_9EXjgCqYp0N0UvO3pqDvCoE8qzoEUdRo_U");
@@ -70,15 +70,8 @@ const sendTokenToServer = (token) => {
 }
 
 const updateUIForPushEnabled = (currentToken) => {
-    console.log(`New toke ${currentToken}`);
+    console.log(`New token ${currentToken}`);
 }
-
-
-messaging.onMessage(function(payload) {
-    console.log('Message received. ', payload);
-    // ...
-});
-  
 
 export {
     messaging,

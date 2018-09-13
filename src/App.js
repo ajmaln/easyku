@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getToken } from './firebase'
-
 import ReactLoading from 'react-loading';
 
-const url = 'https://kerala-university-api.herokuapp.com'
+const url = 'https://kerala-university-api.herokuapp.com/results'
 
 class App extends Component {
   state = {
@@ -14,12 +12,12 @@ class App extends Component {
   }
 
   componentDidMount() {
+    //getToken();
     fetch(url).then(resp => {
       resp.json().then(datas => {
         this.setState({ datas, loading: false })
       })
     })
-    getToken();
   }
 
   header = React.createRef();
@@ -56,5 +54,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
