@@ -1,0 +1,26 @@
+
+
+.actionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    flex-direction: row;
+}
+
+.actionContainer > div {
+    display: flex;
+    flex-direction: column;
+    align-items: inherit;
+    flex: 2;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .actionContainer{
+        flex-direction: column;
+    }
+    .actionContainer > div {
+        margin: 20px 0;
+    }
+}

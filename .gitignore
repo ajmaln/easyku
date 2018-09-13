@@ -24,3 +24,5 @@ firebase.json
 firestore.rules
 firestore.indexes.json
 firestore.indexes.json
+add_component
+add_view
