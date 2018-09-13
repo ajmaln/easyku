@@ -2,21 +2,23 @@ import Home from './views/Home';
 import {Results, Notifications} from './views/Results';
 
 
+const fullPath = (path) => process.env.PUBLIC_URL + path;
+
 const appRoutes = [
     {
         title: 'Home',
-        path: '/',
+        path: fullPath('/'),
         exact: true,
         view: Home
     },
     {
         title: 'Results',
-        path: '/results',
+        path: fullPath('/results'),
         view: Results
     },
     {
         title: 'Notifications',
-        path: '/notifications',
+        path: fullPath('/notifications'),
         view: Notifications
     }
 ]
