@@ -34,7 +34,7 @@ class GenericView extends React.Component {
                                 datas.map(pub =>
                                     Object.keys(pub).map(date => 
                                         <div>
-                                        <code style={{borderRadius: 5, backgroundColor: 'rgba(96, 184, 207, 0.29)'}}>{date}</code>
+                                        <code style={{borderRadius: 5, backgroundColor: 'rgba(96, 184, 207, 0.29)', position: 'sticky', top: 0}}>{date}</code>
                                         {
                                             pub[date].map((o, key) =>
                                             <div key={key} className="ListItem">
