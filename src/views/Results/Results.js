@@ -55,8 +55,8 @@ class GenericView extends React.Component {
 }
 
 
-const Notifications = () => <GenericView url='http://127.0.0.1:8080/notifications'/>
-const Results = () => <GenericView url='http://127.0.0.1:8080/results'/>
+const Notifications = () => <GenericView url='https://kerala-university-api.herokuapp.com/notifications'/>
+const Results = () => <GenericView url='https://kerala-university-api.herokuapp.com/results'/>
 
 export {
     Notifications,
