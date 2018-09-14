@@ -31,11 +31,20 @@ class GenericView extends React.Component {
                         :
                         <div>
                             {
-                                datas.map((data, key) =>
-                                    <div key={key} className="ListItem">
-                                        <h4 className="Text">{data.title}</h4>
-                                        <a className="downloadButton" href={data.link}><button className='downloadButton'>Download</button></a>
-                                    </div>
+                                datas.map(pub =>
+                                    Object.keys(pub).map(date => 
+                                        <div>
+                                        <code style={{borderRadius: 5, backgroundColor: 'rgba(96, 184, 207, 0.29)'}}>{date}</code>
+                                        {
+                                            pub[date].map((o, key) =>
+                                            <div key={key} className="ListItem">
+                                                <h4 className="Text">{o.title}</h4>
+                                                <a className="downloadButton" href={o.link}><button className='downloadButton'>Download</button></a>
+                                            </div>
+                                            )
+                                        }
+                                        </div>
+                                    )
                                 )
                             }
                         </div>
@@ -46,8 +55,8 @@ class GenericView extends React.Component {
 }
 
 
-const Notifications = () => <GenericView url='https://kerala-university-api.herokuapp.com/notifications'/>
-const Results = () => <GenericView url='https://kerala-university-api.herokuapp.com/results'/>
+const Notifications = () => <GenericView url='http://127.0.0.1:8080/notifications'/>
+const Results = () => <GenericView url='http://127.0.0.1:8080/results'/>
 
 export {
     Notifications,
