@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { messaging, getToken } from './utils/firebase';
+import { messaging } from './utils/firebase';
 import Notifications, { notify } from 'react-notify-toast';
 import { BrowserRouter } from 'react-router-dom'
 
@@ -23,4 +23,3 @@ messaging.onMessage(function (payload) {
 navigator.serviceWorker
     .register(`${process.env.PUBLIC_URL}/firebase-messaging-sw.js`)
     .then((registration) => messaging.useServiceWorker(registration))
-    .then(getToken)

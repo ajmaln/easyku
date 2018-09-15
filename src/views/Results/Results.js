@@ -25,7 +25,7 @@ class GenericView extends React.Component {
             <div>
                 {
                     loading ?
-                        <div className='container' style={{ minHeight: window.innerHeight - 200, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                        <div style={{ minHeight: window.innerHeight - 200, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                             <ReactLoading type={'spin'} color={'blue'} height={50} width={50} className='loader' />
                         </div>
                         :

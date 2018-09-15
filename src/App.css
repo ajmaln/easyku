@@ -36,3 +36,7 @@
   to { transform: rotate(360deg); }
 }
 
+.container {
+  width: 100%;
+  padding: 5px 20px;
+}
