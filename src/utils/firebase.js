@@ -28,6 +28,8 @@ const getToken = () => {
         } else {
             // Show permission request.
             console.log('No Instance ID token available. Request permission to generate one.');
+            // Show permission UI
+
             messaging.requestPermission().then(function () {
                 console.log('Notification permission granted.');
                 // Get token for current instance
@@ -76,5 +78,6 @@ const updateUIForPushEnabled = (currentToken) => {
 export {
     messaging,
     getToken,
-    db
+    db,
+    sendTokenToServer
 }
