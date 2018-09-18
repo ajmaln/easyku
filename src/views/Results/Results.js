@@ -1,26 +1,21 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
 import './styles.css';
+import {connect} from 'react-redux'
+
+import {
+    fetchData,
+} from '../../reducers/resultsReducer/actions';
 
 
 class GenericView extends React.Component {
 
-    state = {
-        loading: true,
-        datas: []
-    }
-
     componentDidMount() {
-        fetch(this.props.url).then(resp => {
-            resp.json().then(datas => {
-                this.setState({ datas, loading: false })
-            })
-        })
+        this.props.fetchData(this.props.url);
     }
-
 
     render() {
-        const { loading, datas } = this.state;
+        const { loading, datas } = this.props;
         return (
             <div>
                 {
@@ -32,8 +27,8 @@ class GenericView extends React.Component {
                         <div>
                             {
                                 datas.map(pub =>
-                                    Object.keys(pub).map(date => 
-                                        <div>
+                                    Object.keys(pub).map((date, key) => 
+                                        <div key={key}>
                                         <code style={{borderRadius: 5, backgroundColor: 'rgba(96, 184, 207, 0.29)', position: 'sticky', top: 0}}>{date}</code>
                                         {
                                             pub[date].map((o, key) =>
@@ -54,9 +49,14 @@ class GenericView extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    datas: state.resultsReducer.datas,
+    loading: state.resultsReducer.loading,
+})
 
-const Notifications = () => <GenericView url='https://kerala-university-api.herokuapp.com/notifications'/>
-const Results = () => <GenericView url='https://kerala-university-api.herokuapp.com/results'/>
+const Notifications = connect(mapStateToProps, {fetchData})((props) => <GenericView url='https://kerala-university-api.herokuapp.com/notifications' {...props}/>)
+const Results = connect(mapStateToProps, {fetchData})((props) => <GenericView url='https://kerala-university-api.herokuapp.com/results' {...props}/>)
+
 
 export {
     Notifications,
