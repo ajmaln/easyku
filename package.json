@@ -1,6 +1,6 @@
 {
-  "name": "kerala-university-app",
-  "homepage": "https://ajmaln.github.io/ku-app",
+  "name": "easy-ku",
+  "homepage": "https://ajmaln.github.io/easyKU",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
