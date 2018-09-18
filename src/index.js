@@ -4,15 +4,20 @@ import './index.css';
 import App from './App';
 import { messaging } from './utils/firebase';
 import Notifications, { notify } from 'react-notify-toast';
-import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
+import store, { history } from './store'
 
 ReactDOM.render(
-    <BrowserRouter>
+    <Provider store={store}>
+    <ConnectedRouter history={history}>
         <div>
             <Notifications />
             <App />
-        </div>
-    </BrowserRouter>, 
+        </div> 
+    </ConnectedRouter>
+    </Provider>
+    ,
     document.getElementById('root'));
 //registerServiceWorker();
 
