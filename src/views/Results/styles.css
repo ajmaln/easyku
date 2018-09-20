@@ -37,3 +37,10 @@ a.downloadButton {
       padding-bottom: 5px; 
     }
 }
+
+.date {
+    border-radius: 5px;
+    background-color: rgba(96, 184, 207, 0.29);
+    position: sticky;
+    top: 0;
+}

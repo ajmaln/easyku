@@ -1,0 +1,11 @@
+.icon-button {
+    border: none;
+    background: inherit;
+    outline: none;
+}
+
+
+.icon-button:hover {
+    color: rgba(0, 0, 0, 0.76);
+    cursor: pointer;
+}
