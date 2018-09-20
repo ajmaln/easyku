@@ -26,3 +26,6 @@ firestore.indexes.json
 firestore.indexes.json
 add_component
 add_view
+
+# vscode
+.vscode

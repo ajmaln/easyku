@@ -6,16 +6,27 @@ import {connect} from 'react-redux'
 import {
     fetchData,
 } from '../../reducers/resultsReducer/actions';
+import Search from './components/Search';
+import ResultList from './components/ResultList';
 
 
-class GenericView extends React.Component {
+class GenericListView extends React.Component {
+
+    state = {
+        filter: ''
+    }
 
     componentDidMount() {
         this.props.fetchData(this.props.url);
     }
 
+    onSearch = (filter) => {
+        this.setState({filter: new RegExp(filter.replace('.', '').replace(' ', ''), 'i')})
+    }
+
     render() {
         const { loading, datas } = this.props;
+        const { filter } = this.state;
         return (
             <div>
                 {
@@ -25,23 +36,8 @@ class GenericView extends React.Component {
                         </div>
                         :
                         <div>
-                            {
-                                datas.map(pub =>
-                                    Object.keys(pub).map((date, key) => 
-                                        <div key={key}>
-                                        <code style={{borderRadius: 5, backgroundColor: 'rgba(96, 184, 207, 0.29)', position: 'sticky', top: 0}}>{date}</code>
-                                        {
-                                            pub[date].map((o, key) =>
-                                            <div key={key} className="ListItem">
-                                                <h4 className="Text">{o.title}</h4>
-                                                <a className="downloadButton" href={o.link}><button className='downloadButton'>Download</button></a>
-                                            </div>
-                                            )
-                                        }
-                                        </div>
-                                    )
-                                )
-                            }
+                            <Search onChange={this.onSearch}/>
+                            <ResultList datas={datas} filter={filter}/>
                         </div>
                 }
             </div>
@@ -54,8 +50,8 @@ const mapStateToProps = (state) => ({
     loading: state.resultsReducer.loading,
 })
 
-const Notifications = connect(mapStateToProps, {fetchData})((props) => <GenericView url='https://kerala-university-api.herokuapp.com/notifications' {...props}/>)
-const Results = connect(mapStateToProps, {fetchData})((props) => <GenericView url='https://kerala-university-api.herokuapp.com/results' {...props}/>)
+const Notifications = connect(mapStateToProps, {fetchData})((props) => <GenericListView url='https://kerala-university-api.herokuapp.com/notifications' {...props}/>)
+const Results = connect(mapStateToProps, {fetchData})((props) => <GenericListView url='https://kerala-university-api.herokuapp.com/results' {...props}/>)
 
 
 export {
