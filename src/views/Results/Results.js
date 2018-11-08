@@ -13,20 +13,23 @@ import ResultList from './components/ResultList';
 class GenericListView extends React.Component {
 
     state = {
-        filter: ''
+        filters: [],
+        filter_string: '',
     }
 
     componentDidMount() {
         this.props.fetchData(this.props.url);
     }
 
-    onSearch = (filter) => {
-        this.setState({filter: new RegExp(filter.replace('.', '').replace(' ', ''), 'i')})
+    onSearch = (filter_string) => {
+        const filters = filter_string.split(' ');
+        const filter_regexes = filters.reduce((res, filter) => filter !== ''? [...res, new RegExp(filter.replace('.', '').replace(' ', ''), 'i')]: res, [])
+        this.setState({ filters: filter_regexes, filter_string })
     }
 
     render() {
         const { loading, datas } = this.props;
-        const { filter } = this.state;
+        const { filters, filter_string } = this.state;
         return (
             <div>
                 {
@@ -37,7 +40,7 @@ class GenericListView extends React.Component {
                         :
                         <div>
                             <Search onChange={this.onSearch}/>
-                            <ResultList datas={datas} filter={filter}/>
+                            <ResultList datas={datas} filters={filters} filter_string={filter_string}/>
                         </div>
                 }
             </div>
