@@ -13,7 +13,12 @@ var config = {
 
 firebase.initializeApp(config);
 
-const messaging = firebase.messaging();
+let messaging;
+
+if (firebase.messaging.isSupported()) {
+    messaging = firebase.messaging();
+}
+
 const db = firebase.firestore();
 
 const settings = {/* your settings... */ timestampsInSnapshots: true };
@@ -81,5 +86,6 @@ export {
     messaging,
     getToken,
     db,
-    sendTokenToServer
+    sendTokenToServer,
+    firebase,
 }
