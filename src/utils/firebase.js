@@ -2,6 +2,9 @@ import firebase from 'firebase/app';
 import 'firebase/messaging';
 import 'firebase/firestore';
 
+import { notify } from 'react-notify-toast';
+
+
 var config = {
     apiKey: "AIzaSyD3l7LInSkCQog2t6J7X2-Bm9fBza_ijKA",
     authDomain: "ku-view.firebaseapp.com",
@@ -17,6 +20,28 @@ let messaging;
 
 if (firebase.messaging.isSupported()) {
     messaging = firebase.messaging();
+    messaging.usePublicVapidKey("BDDNlVdwUP39dJEu9rfD7kBEOUvaUXhJkuQqC4Nc4B0P3HtpVl0E_9EXjgCqYp0N0UvO3pqDvCoE8qzoEUdRo_U");
+    messaging.onTokenRefresh(function () {
+        messaging.getToken().then(function (refreshedToken) {
+            console.log('Token refreshed.');
+            // Indicate that the new Instance ID token has not yet been sent to the
+            // app server.
+            // setTokenSentToServer(false);
+            // Send Instance ID token to app server.
+            sendTokenToServer(refreshedToken);
+            // ...
+        }).catch(function (err) {
+            console.log('Unable to retrieve refreshed token ', err);
+            //showToken('Unable to retrieve refreshed token ', err);
+        });
+    });
+    messaging.onMessage(function (payload) {
+        console.log('Message received. ', payload);
+        notify.show(payload.data.body + ', please refresh')
+    });
+    navigator.serviceWorker
+        .register(`${process.env.PUBLIC_URL}/firebase-messaging-sw.js`)
+        .then((registration) => messaging.useServiceWorker(registration))
 }
 
 const db = firebase.firestore();
@@ -24,7 +49,7 @@ const db = firebase.firestore();
 const settings = {/* your settings... */ timestampsInSnapshots: true };
 db.settings(settings);
 
-messaging.usePublicVapidKey("BDDNlVdwUP39dJEu9rfD7kBEOUvaUXhJkuQqC4Nc4B0P3HtpVl0E_9EXjgCqYp0N0UvO3pqDvCoE8qzoEUdRo_U");
+
 
 
 const getToken = () => {
@@ -55,23 +80,6 @@ const getToken = () => {
     });
 
 }
-
-
-
-messaging.onTokenRefresh(function () {
-    messaging.getToken().then(function (refreshedToken) {
-        console.log('Token refreshed.');
-        // Indicate that the new Instance ID token has not yet been sent to the
-        // app server.
-        // setTokenSentToServer(false);
-        // Send Instance ID token to app server.
-        sendTokenToServer(refreshedToken);
-        // ...
-    }).catch(function (err) {
-        console.log('Unable to retrieve refreshed token ', err);
-        //showToken('Unable to retrieve refreshed token ', err);
-    });
-});
 
 const sendTokenToServer = (token) => {
     const tokenRef = db.doc(`tokens/${token}`)

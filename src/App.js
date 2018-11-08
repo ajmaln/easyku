@@ -5,7 +5,6 @@ import appRoutes from './routes';
 import Nav from './components/Nav';
 import PermissionPopup from './components/PermissionPopup/PermissionPopup';
 import { messaging, sendTokenToServer } from './utils/firebase';
-import { notify } from 'react-notify-toast';
 
 
 class App extends Component {
@@ -16,6 +15,7 @@ class App extends Component {
   }
 
   getToken = () => {
+    messaging.getToken &&
     messaging.getToken().then(currentToken => {
       if (currentToken) {
         console.log('currentToken: ', currentToken);
@@ -28,6 +28,7 @@ class App extends Component {
 
   handlePermission = () => {
     const _this = this;
+    messaging.requestPermission &&
     messaging.requestPermission().then(function () {
       console.log('Notification permission granted.');
       _this.setState({hidden: true})
@@ -72,14 +73,6 @@ class App extends Component {
     );
   }
 }
-
-messaging.onMessage(function (payload) {
-  console.log('Message received. ', payload);
-  notify.show(payload.data.body + ', please refresh')
-});
-navigator.serviceWorker
-  .register(`${process.env.PUBLIC_URL}/firebase-messaging-sw.js`)
-  .then((registration) => messaging.useServiceWorker(registration))
 
 
 export default App;
