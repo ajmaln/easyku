@@ -15,6 +15,7 @@ class App extends Component {
   }
 
   getToken = () => {
+    messaging.getToken &&
     messaging.getToken().then(currentToken => {
       if (currentToken) {
         console.log('currentToken: ', currentToken);
@@ -27,6 +28,7 @@ class App extends Component {
 
   handlePermission = () => {
     const _this = this;
+    messaging.requestPermission &&
     messaging.requestPermission().then(function () {
       console.log('Notification permission granted.');
       _this.setState({hidden: true})
