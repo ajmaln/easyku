@@ -5,7 +5,7 @@ class ListItem extends React.Component {
     render() {
         const { data, date, filters, filter_string } = this.props;
         if (filter_string !== '') {
-            const hidden = filters.some(filter => !data.every(item => item.title.replace(/ /g, '').replace(/\./g, '').search(filter) > -1))
+            const hidden = filters.some(filter => !data.some(item => item.title.replace(/ /g, '').replace(/\./g, '').search(filter) > -1))
             return (
                 <div className={hidden && 'hidden'}>
                     <code className='date'>{date}</code>
