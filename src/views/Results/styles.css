@@ -1,22 +1,26 @@
-.downloadButton {
+.downloadLink {
     flex: 1;
-    color: azure;
-    font-size: medium;
-    height: 40px;
-    background-color: #248abb;
-    border: none;
-    box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.4);
-    transition: box-shadow 0.2s ease-in-out;
+    width: 100%;
 }
 
 button.downloadButton {
     width: 100%;
     cursor: pointer;
+    padding: 12px;
+    background-color: blue;
+    color: azure;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+    transition: box-shadow 0.2s ease-in-out;
+    font-size: medium;
+    font-weight: bold;
+    height: 40px;
 }
 
 button.downloadButton:hover {
-    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.4);
-    background-color: #30b8f996
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.4);
+    background-color: rgb(54, 54, 248)
 }
 
 a.downloadButton {
@@ -42,5 +46,5 @@ a.downloadButton {
     border-radius: 5px;
     background-color: rgba(96, 184, 207, 0.29);
     position: sticky;
-    top: 0;
+    top: 44px;
 }

@@ -5,13 +5,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: darkslategrey;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 2px;
 }
 
 .nav > a {
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     padding: 15px 15px;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 .nav > a:hover {
@@ -19,5 +21,6 @@
 }
 
 .nav > a.active {
-    background-color: rgba(240, 248, 255, 0.541)
+    background-color: rgb(217, 237, 255);
+    border-bottom: 3px solid blue;
 }

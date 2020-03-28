@@ -11,7 +11,8 @@ var config = {
     databaseURL: "https://ku-view.firebaseio.com",
     projectId: "ku-view",
     storageBucket: "ku-view.appspot.com",
-    messagingSenderId: "77378557282"
+    messagingSenderId: "77378557282",
+    appId: "1:77378557282:web:fde38ce3a21d4fd515883b"
 };
 
 firebase.initializeApp(config);
@@ -48,9 +49,6 @@ const db = firebase.firestore();
 
 const settings = {/* your settings... */ timestampsInSnapshots: true };
 db.settings(settings);
-
-
-
 
 const getToken = () => {
     messaging.getToken().then(function (currentToken) {

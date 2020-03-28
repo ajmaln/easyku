@@ -14,7 +14,9 @@ class ListItem extends React.Component {
                             filters.every(filter => item.title.replace(/ /g, '').replace(/\./g, '').search(filter) > -1) &&
                             <div key={key} className="ListItem">
                                 <h4 className="Text">{item.title}</h4>
-                                <a className="downloadButton" href={item.link}><button className='downloadButton'>Download</button></a>
+                                <a className="downloadLink" href={item.link}>
+                                    <button className="downloadButton">Download</button>
+                                </a>
                             </div>
                         )
                     }
@@ -28,7 +30,9 @@ class ListItem extends React.Component {
                         data.map((o, key) =>
                             <div key={key} className="ListItem">
                                 <h4 className="Text">{o.title}</h4>
-                                <a className="downloadButton" href={o.link}><button className='downloadButton'>Download</button></a>
+                                <a className="downloadLink" href={o.link}>
+                                    <button className="downloadButton">Download</button>
+                                </a>
                             </div>
                         )
                     }
