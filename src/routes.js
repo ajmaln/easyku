@@ -1,3 +1,4 @@
+import React from 'react'
 import Home from './views/Home';
 import {Results, Notifications} from './views/Results';
 
@@ -9,7 +10,7 @@ const appRoutes = [
         title: 'Home',
         path: fullPath('/'),
         exact: true,
-        view: Home
+        view: () => <Home />
     },
     {
         title: 'Results',

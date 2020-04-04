@@ -1,6 +1,6 @@
 {
   "name": "easy-ku",
-  "homepage": "https://ajmaln.github.io/easyku",
+  "homepage": "https://easyku.web.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,11 +9,8 @@
     "react-dom": "^16.4.2",
     "react-loading": "^2.0.3",
     "react-notify-toast": "^0.5.0",
-    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "react-scripts": "1.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -6,7 +6,6 @@
 button.downloadButton {
     width: 100%;
     cursor: pointer;
-    padding: 12px;
     background-color: blue;
     color: azure;
     border-radius: 5px;

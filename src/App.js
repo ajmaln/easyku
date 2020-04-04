@@ -5,6 +5,8 @@ import appRoutes from './routes';
 import Nav from './components/Nav';
 import PermissionPopup from './components/PermissionPopup/PermissionPopup';
 import { messaging, getToken as getTokenFunc } from './utils/firebase';
+import { BrowserRouter as Router } from 'react-router-dom';
+import api from './api';
 
 
 const App = () => {
@@ -19,6 +21,16 @@ const App = () => {
   const requestPermissionUI = () => {
     setState({ hidden: false })
   }
+
+  const [{ data, loading }, setData] = useState({ data: { results: [], notifications: [] }, loading: true })
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const [results, notifications] = await Promise.all([api.fetchResults(), api.fetchNotifications()])
+      setData({ data: { results, notifications }, loading: false })
+    }
+    fetchData()
+  }, [])
 
 
   const getToken = useCallback(() => {
@@ -45,26 +57,28 @@ const App = () => {
 
   useEffect(() => {
     navigator.serviceWorker &&
-    navigator.serviceWorker.ready.then(() => {
-      getToken()
-    })
+      navigator.serviceWorker.ready.then(() => {
+        getToken()
+      })
   }, [])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title"><span>easy</span><span style={{ color: '#d65a5a' }}>KU</span></h1>
-      </header>
-      <Nav />
-      <Switch>
-        {
-          appRoutes.map((route, key) =>
-            <Route key={key} path={route.path} exact={!!route.exact} component={route.view} />
-          )
-        }
-      </Switch>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title"><span>easy</span><span style={{ color: '#d65a5a' }}>KU</span></h1>
+        </header>
+        <Nav />
+        <Switch>
+          {
+            appRoutes.map((route, key) =>
+              <Route key={key} path={route.path} exact={!!route.exact} render={() => route.view({ data, loading })} />
+            )
+          }
+        </Switch>
       <PermissionPopup hidden={hidden} handleYes={handlePermission} handleClose={handleClose} />
     </div>
+    </Router >
   );
 }
 
