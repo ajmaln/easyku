@@ -1,49 +1,68 @@
 .downloadLink {
-    flex: 1;
-    width: 100%;
+  flex: 1;
+  width: 100%;
 }
 
 button.downloadButton {
-    width: 100%;
-    cursor: pointer;
-    background-color: blue;
-    color: azure;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
-    transition: box-shadow 0.2s ease-in-out;
-    font-size: medium;
-    font-weight: bold;
-    height: 40px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #2085e2;
+  color: azure;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.2s ease-in-out;
+  font-size: medium;
+  font-weight: bold;
+  height: 40px;
 }
 
 button.downloadButton:hover {
-    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.4);
-    background-color: rgb(54, 54, 248)
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background-color: #468cf0;
 }
 
 a.downloadButton {
-    width: 90%;
+  width: 90%;
+}
+.listItemWrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.ListItem {
-    display: flex;
-    flex-direction: row;
+.listItem {
+  width: 400px;
+  margin: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: #eee;
+  border-radius: 0.5rem;
+}
+
+@media only screen and (max-width: 1250px) {
+  .listItemWrapper {
     justify-content: center;
-    align-items: center;
-    padding: 0 10px;
+  }
 }
-
+@media only screen and (max-width: 800px) {
+  .listItem {
+    width: 40%;
+  }
+}
 @media only screen and (max-width: 600px) {
-    .ListItem {
-      flex-direction: column;
-      padding-bottom: 5px; 
-    }
+  .listItem {
+    width: 95%;
+  }
 }
 
 .date {
-    border-radius: 5px;
-    background-color: rgba(96, 184, 207, 0.29);
-    position: sticky;
-    top: 44px;
+  border-radius: 5px;
+  background-color: rgba(96, 184, 207, 0.29);
+  position: sticky;
+  top: 44px;
 }
