@@ -6,7 +6,7 @@ const fullPath = (path) => process.env.PUBLIC_URL + path;
 export const ROUTES = [
   {
     title: "Results",
-    path: fullPath("/results"),
+    path: fullPath("/"),
     component: Results,
   },
   {
