@@ -3,7 +3,8 @@
 Easily Access Results, Notifications from https://exams.keralauniversity.ac.in. Get updated on new result announcements and notifications
 
 ---
-![Image](https://serving.photos.photobox.com/542390966ce37ff4a25831e7a7f71087f5ff329fa6bf6828583b5640afdccea36f700c37.jpg)
+![image](https://user-images.githubusercontent.com/22348659/150686766-66995ead-c397-4b03-9c7b-3aac51cea405.png)
+
 
 ### Installation & Setup
 1. Clone the repositiory
