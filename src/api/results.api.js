@@ -1,4 +1,4 @@
-const BASE_URL = 'https://kerala-university-api.herokuapp.com'
+const BASE_URL = 'https://api.easyku.in'
 
 const fetchResults = async () => {
     const data = await (await fetch(`${BASE_URL}/results`)).json()
