@@ -46,8 +46,8 @@ const ListItem = ({ data, date, filters, filterString }) => {
         })}
       >
         <div className="flex items-center px-6 space-x-2 sticky top-2 mb-2">
-        <p className="font-mono">{date}</p>
-        <div className="h-0.5 bg-gray-200 w-full" />
+          <p className="font-mono">{date}</p>
+          <div className="h-0.5 bg-gray-200 w-full" />
         </div>
         <div className="flex flex-wrap px-6 my-6">
           {filteredItems.map((item, key) => (
@@ -72,19 +72,15 @@ const ListItem = ({ data, date, filters, filterString }) => {
 
 const ResultList = ({ datas, filters, filterString }) => (
   <div className="pt-6">
-    {datas.map((data) =>
-      Object.keys(data).map((date, key) => {
-        return (
-          <ListItem
-            key={key}
-            data={data[date]}
-            date={date}
-            filters={filters}
-            filter_string={filterString}
-          />
-        );
-      })
-    )}
+    {datas.map(({ date, entries }) => (
+      <ListItem
+        key={date}
+        data={entries}
+        date={date}
+        filters={filters}
+        filter_string={filterString}
+      />
+    ))}
   </div>
 );
 
