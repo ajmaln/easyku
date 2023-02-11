@@ -29,7 +29,7 @@ class WhatIDo extends React.Component {
       },
     ];
     return (
-      <div>
+      <div className="text-gray-800 dark:text-gray-100">
         <h1 className="text-center text-4xl">What I do?</h1>
         <div className="actionContainer">
           {actions.map((action, key) => (
