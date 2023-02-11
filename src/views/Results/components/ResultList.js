@@ -16,7 +16,7 @@ const ResultItem = ({ title, link, date }) => (
         </Button>
       </a>
       <a target="_blank" href={link}>
-        <Button className="bg-transparent text-blue-500 hover:bg-gray-100">
+        <Button type="link">
           View <Icon className="text-base ml-2">visibility</Icon>
         </Button>
       </a>
@@ -71,7 +71,7 @@ const ListItem = ({ data, date, filters, filterString }) => {
 };
 
 const ResultList = ({ datas, filters, filterString }) => (
-  <div className="pt-6">
+  <div className="pt-6 text-gray-800 dark:text-gray-100">
     {datas.map(({ date, entries }) => (
       <ListItem
         key={date}
